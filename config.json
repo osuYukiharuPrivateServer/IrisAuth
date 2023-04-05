@@ -1,0 +1,5 @@
+{
+  "app_name": "Name_of_the_app",
+  "app_port": "7899",
+  "mysql_addr": "database_user:database_password@tcp(127.0.0.1:3306)/databse_name"
+}
