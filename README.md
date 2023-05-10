@@ -1,6 +1,9 @@
 # IrisAuth: A Cross-domain SSO Service with Go Iris
 
 
+NOTICE: The original repository in https://github.com/hedgehog-qd/IrisAuth is moved there. The original one will no longer be updated.
+
+
 NOTICE: Please don't try this directly in production environment unless adding on encrypting functions in login.html, register.html.
 
 
