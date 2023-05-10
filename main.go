@@ -163,7 +163,7 @@ func loginget(ctx iris.Context) {
 		if err2 != nil {
 			fmt.Println("doublecheck / Something Wrong Happens", err2)
 		}
-		ctx.Redirect(session.GetString("checkURL") + "/?redirect_url=" + session.GetString("redirectURL") + "?uid=" + session.GetString("uid"))
+		ctx.Redirect(session.GetString("checkURL") + "?redirect_url=" + session.GetString("redirectURL") + "&uid=" + session.GetString("uid"))
 	}
 	ctx.View("login.html")
 }
@@ -186,8 +186,14 @@ func loginpost(ctx iris.Context) {
 		if err != nil {
 			fmt.Println("LoginPost / Something Wrong Happens", err)
 		}
+		sql2 := "UPDATE users SET doublecheck = ? WHERE uid = ?"
+		row2 := db.QueryRow(sql2, true, u.uid)
+		err2 := row2.Scan()
+		if err2 != nil {
+			fmt.Println("LoginPost / Something Wrong Happens", err2)
+		}
 		session.Set("uid", u.uid)
-		ctx.Redirect(session.GetString("checkURL") + "/?redirect_url=" + session.GetString("redirectURL") + "&uid=" + strconv.Itoa(u.uid))
+		ctx.Redirect(session.GetString("checkURL") + "?uid=" + strconv.Itoa(u.uid) + "&redirect_url=" + session.GetString("redirectURL"))
 		fmt.Print("Login request: " + email + " " + passwd + " RedirectURL= " + session.GetString("redirectURL") + " CheckURL= " + session.GetString("checkURL") + ": Success.")
 	}
 	if status == 2 { //passwd incorrect
