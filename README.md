@@ -25,11 +25,11 @@ be easier for users to do the authorization.
 That's it.
 
 
-##Demo
+## Demo
 There is a demo we made using the Python Flask. It is in the 'demo' folder. We showed how to use this authorization app in other
 websites or services by changing the `login()` function and add the `doublecheck()` function as shown in the */demo/app.py*
 
 
-##Tips
+## Tips
 You may need to edit the ports, and the URLs to let it fit your needs
 
